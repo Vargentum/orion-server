@@ -7,7 +7,13 @@
     "test": "test",
     "dev": "nodemon -i \"*.test.js\" .",
     "start": "node .",
-    "lint": "eslint src"
+    "lint": "eslint .",
+    "prettify": "prettier --write .",
+    "prepare": "husky install",
+    "pre-commit": "npm run lint && npm run prettify"
+  },
+  "lint-staged": {
+    "**/*": "npm run pre-commit"
   },
   "repository": {
     "type": "git",
@@ -30,6 +36,8 @@
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
     "nodemon": "^2.0.15",
     "prettier": "2.6.1"
   },
