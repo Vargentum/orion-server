@@ -1,0 +1,41 @@
+{
+  "name": "orion-server",
+  "version": "0.1.0",
+  "description": "Orion app server",
+  "main": "src",
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon -i \"*.test.js\" .",
+    "start": "node .",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vargentum/orion-server.git"
+  },
+  "author": "vargentum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vargentum/orion-server/issues"
+  },
+  "homepage": "https://github.com/Vargentum/orion-server#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/plugin-proposal-export-default-from": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.7",
+    "@babel/runtime": "^7.17.8",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "2.6.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.9"
+  }
+}
