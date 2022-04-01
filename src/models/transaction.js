@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { TRANSACTION_TYPES } from "../utils/constants";
-import { name as Currency } from "./currency";
 
 export const name = "Transaction";
 
@@ -20,8 +19,7 @@ export const schema = mongoose.Schema(
       required: true,
     },
     currency: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: Currency,
+      type: String,
       required: true,
     },
   },

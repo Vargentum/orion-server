@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { name as Currency } from "./currency";
 
 export const name = "Account";
 
@@ -9,8 +8,7 @@ const schema = mongoose.Schema({
     required: true,
   },
   currency: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: Currency,
+    type: String,
     required: true,
   },
   transactions: {

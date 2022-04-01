@@ -1,3 +1,5 @@
+// Temporary disabled due to graphql-scalars Currency type
+
 import mongoose from "mongoose";
 
 export const name = "Currency";

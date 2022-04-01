@@ -1,6 +1,10 @@
 import { gql } from "apollo-server-express";
 
 export default gql`
+  scalar DateTime
+  scalar EmailAddress
+  scalar Currency
+
   enum TRANSACTION_TYPE {
     INCOME
     EXPENCE
@@ -31,25 +35,19 @@ export default gql`
     type: CATEGORY_TYPE!
   }
 
-  type Currency {
-    id: ID
-    name: String!
-    ticker: String!
-  }
-
   type Transaction {
     id: ID
     type: TRANSACTION_TYPE!
     amount: Float!
     currency: Currency!
-    # createdAt: DateTime!,
-    # updatedAt: DateTime!,
+    createdAt: DateTime!
+    updatedAt: DateTime!
   }
 
   type User {
     id: ID
     avatar: String
     name: String
-    email: String!
+    email: EmailAddress!
   }
 `;
