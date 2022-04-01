@@ -3,6 +3,7 @@ import {
   DateTimeResolver,
   EmailAddressResolver,
   CurrencyResolver,
+  URLResolver,
 } from "graphql-scalars";
 // import Mutation from './mutation'
 
@@ -12,4 +13,5 @@ export default {
   DateTime: DateTimeResolver,
   EmailAddress: EmailAddressResolver,
   Currency: CurrencyResolver,
+  URL: URLResolver,
 };

@@ -4,6 +4,7 @@ export default gql`
   scalar DateTime
   scalar EmailAddress
   scalar Currency
+  scalar URL
 
   enum TRANSACTION_TYPE {
     INCOME
@@ -23,20 +24,20 @@ export default gql`
   # type Mutation { }
 
   type Account {
-    id: ID
+    id: ID!
     name: String!
     currency: Currency!
     transactions: [Transaction!]!
   }
 
   type Category {
-    id: ID
+    id: ID!
     name: String!
     type: CATEGORY_TYPE!
   }
 
   type Transaction {
-    id: ID
+    id: ID!
     type: TRANSACTION_TYPE!
     amount: Float!
     currency: Currency!
@@ -45,8 +46,8 @@ export default gql`
   }
 
   type User {
-    id: ID
-    avatar: String
+    id: ID!
+    avatar: URL
     name: String
     email: EmailAddress!
   }
