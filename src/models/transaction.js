@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { TRANSACTION_TYPES } from "../utils/constants";
+import { name as User } from "./user";
 
 export const name = "Transaction";
 
@@ -21,6 +22,10 @@ export const schema = mongoose.Schema(
     currency: {
       type: String,
       required: true,
+    },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: User,
     },
   },
   {

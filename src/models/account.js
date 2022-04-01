@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { name as User } from "./user";
 
 export const name = "Account";
 
@@ -15,6 +16,10 @@ const schema = mongoose.Schema({
     type: String,
     required: true,
     default: [],
+  },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User,
   },
 });
 

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { CATEGORY_TYPES } from "../utils/constants";
+import { name as User } from "./user";
 
 export const name = "Category";
 
@@ -12,6 +13,10 @@ const schema = mongoose.Schema({
     type: String,
     enum: Object.keys(CATEGORY_TYPES),
     required: true,
+  },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User,
   },
 });
 
