@@ -21,7 +21,10 @@ export default gql`
   type Query {
     me: User
   }
-  # type Mutation { }
+  type Mutation {
+    signUp(email: EmailAddress!, password: String!, name: String): String!
+    signIn(email: EmailAddress!, password: String!): String!
+  }
 
   type Account {
     id: ID!
@@ -50,5 +53,6 @@ export default gql`
     avatar: URL
     name: String
     email: EmailAddress!
+    password: String!
   }
 `;

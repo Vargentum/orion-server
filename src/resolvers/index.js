@@ -5,11 +5,11 @@ import {
   CurrencyResolver,
   URLResolver,
 } from "graphql-scalars";
-// import Mutation from './mutation'
+import Mutation from "./mutation";
 
 export default {
   Query,
-  // Mutation
+  Mutation,
   DateTime: DateTimeResolver,
   EmailAddress: EmailAddressResolver,
   Currency: CurrencyResolver,
