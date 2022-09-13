@@ -34,7 +34,7 @@ const getUser = (token) => {
   const gqlServer = new ApolloServer({
     typeDefs,
     resolvers,
-    validationRules: [depthLimit(5), createComplexityLimitRule(100)],
+    validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
     context: async ({ req }) => {
       const user = getUser(req.headers.authorization);
 
