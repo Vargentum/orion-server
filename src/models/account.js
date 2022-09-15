@@ -1,25 +1,27 @@
-import mongoose from "mongoose";
 import { name as User } from "./user";
+import mongoose from "mongoose";
 
 export const name = "Account";
 
 const schema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User,
+  },
+  amount: {
+    type: Number,
+    default: 0,
   },
   currency: {
     type: String,
     required: true,
   },
-  transactions: {
+  description: {
+    type: String,
+  },
+  name: {
     type: String,
     required: true,
-    default: [],
-  },
-  author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: User,
   },
 });
 

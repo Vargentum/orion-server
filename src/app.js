@@ -1,27 +1,18 @@
 import "dotenv/config";
-import express from "express";
+
+import { ApolloServer, AuthenticationError } from "apollo-server-express";
+import { auth, db } from "./utils";
+
 import cors from "cors";
-import jwt from "jsonwebtoken";
-import helmet from "helmet";
-import { ApolloServer } from "apollo-server-express";
-import depthLimit from "graphql-depth-limit";
 import { createComplexityLimitRule } from "graphql-validation-complexity";
-import typeDefs from "./schema";
+import depthLimit from "graphql-depth-limit";
+import express from "express";
+import helmet from "helmet";
 import models from "./models";
 import resolvers from "./resolvers";
-import { db } from "./utils";
+import typeDefs from "./schema";
 
-const { PORT, JWT_SECRET, DB_HOST } = process.env;
-
-const getUser = (token) => {
-  if (token) {
-    try {
-      return jwt.verify(token, JWT_SECRET);
-    } catch (e) {
-      throw new Error("Can't verify JWT token");
-    }
-  }
-};
+const { PORT, DB_HOST } = process.env;
 
 (async function startGqlServer() {
   const app = express();
@@ -36,7 +27,11 @@ const getUser = (token) => {
     resolvers,
     validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
     context: async ({ req }) => {
-      const user = getUser(req.headers.authorization);
+      const user = await auth.verifyToken(req.headers.authorization);
+
+      if (req.headers.authorization && !user) {
+        throw new AuthenticationError("Invalid token");
+      }
 
       return { models, user };
     },
